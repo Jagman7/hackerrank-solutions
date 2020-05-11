@@ -3,6 +3,28 @@
 def check():
     return "Yeah its working !!"
 
+def DefaultDict_Tutorial():
+    import sys
+
+    stdin_fileno = sys.stdin
+    count_in = 0
+    total_lines = 0
+    for line in stdin_fileno:
+        if 'exit' == line.strip():
+            # print('Found exit. Terminating the program')
+            # exit(0)
+            stdout_fileno = sys.stdout
+            sample_input = ['Hi', 'Hello from AskPython', 'exit']
+            for ip in sample_input:
+                # Prints to stdout
+                stdout_fileno.write(ip + '\n')
+            exit(0)
+        else:
+            if count_in == 0:
+                value = (line.strip()).split(" ")
+                total_lines = int(value[0]) + int(value[1])
+                print(total_lines)
+
 
 def Alphabet_Rangoli():
     n = 3 ;

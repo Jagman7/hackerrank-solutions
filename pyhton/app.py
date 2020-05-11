@@ -8,10 +8,11 @@ def hello_world():
 
 @app.route('/test')
 def function_check():
-    # print(*a, sep = "\n")
-    function.Alphabet_Rangoli()
-    
-    return ("Hello")
+    ############### Functions ###############
+    # function.Alphabet_Rangoli()   
+    function.DefaultDict_Tutorial()
+    #########################################
+    return ("Working [##########.............] 75% Completed")
 
 
 
