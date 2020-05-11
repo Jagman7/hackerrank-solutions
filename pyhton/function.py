@@ -5,7 +5,7 @@ def check():
 
 
 def Alphabet_Rangoli():
-    n = 3  ;
+    n = 3 ;
     alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
             "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
@@ -32,14 +32,13 @@ def Alphabet_Rangoli():
         if count <= int(len(final_output)/2):
             nlist[temp_cen]=alpha[alpha_strt]
             for u in range(char_add_count):
-                print("char: ",u," round: ", int(char_add_count/2), "al :", alpha[alpha_strt])
+                # print("char: ",u," round: ", int(char_add_count/2), "al :", alpha[alpha_strt])
                 nlist[temp_cen]=alpha[alpha_strt]
                 temp_cen = temp_cen + 2
                 if u < int(char_add_count/2):
                     alpha_strt = alpha_strt - 1
                 else:
                     alpha_strt = alpha_strt + 1
-
         #############################################
 
         xx = "".join(nlist)
@@ -47,10 +46,38 @@ def Alphabet_Rangoli():
         count = count + 1
         char_add_count = char_add_count + 2
         center = center - 2
-        # if count == 3:
-        #     print("Break hua")
-        #     break
+##########################################################################
 
+    center =  int(column_count/2)
+    count = 1
+    char_add_count = 1
+
+
+    count = 0
+    count_al = 1
+    for yy in reversed(final_output):
+        nlist = list(yy)
+        temp_cen = center
+        alpha_strt = n-1
+
+        if count <= int(len(final_output)/2):
+            nlist[temp_cen]=alpha[alpha_strt]
+            for u in range(char_add_count):
+                # print("count: ",count,"char: ",u," round: ", int(char_add_count/2), "al :", alpha[alpha_strt])
+                nlist[temp_cen]=alpha[alpha_strt]
+                temp_cen = temp_cen + 2
+                if u < int(char_add_count/2):
+                    alpha_strt = alpha_strt - 1
+                else:
+                    alpha_strt = alpha_strt + 1
+
+        yy = "".join(nlist)
+        # print("yy :",yy)
+        final_output[len(final_output)-count_al] = yy
+        count_al = count_al + 1
+        count = count + 1
+        char_add_count = char_add_count + 2
+        center = center - 2
 
 
     print(*final_output, sep = "\n")
