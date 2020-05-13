@@ -7,23 +7,76 @@ def DefaultDict_Tutorial():
     import sys
 
     stdin_fileno = sys.stdin
-    count_in = 0
+    stdout_fileno = sys.stdout
+    count_in = -1
     total_lines = 0
+    n = 0
+    m = 0
+    arr_n = []
+    arr_m = []
+    n_count = 1
+    # print("count_in :",count_in,"total :", total_lines)
     for line in stdin_fileno:
-        if 'exit' == line.strip():
+        # print("count_in :",count_in,"total :", total_lines)
+        if count_in == total_lines:
             # print('Found exit. Terminating the program')
             # exit(0)
-            stdout_fileno = sys.stdout
-            sample_input = ['Hi', 'Hello from AskPython', 'exit']
-            for ip in sample_input:
-                # Prints to stdout
-                stdout_fileno.write(ip + '\n')
+            # stdout_fileno = sys.stdout
+            value = str(line.strip())
+            arr_m.append(value)
+            final_output = []
+
+            for x in arr_m:
+                temp_arr=[]
+                poss = 1
+                check=0
+                for y in arr_n:
+                    if x == y:
+                        temp_arr.append(poss)
+                        check = 1
+                    # if check == 0:
+                    #     temp_arr.append(-1)
+                    poss = poss + 1
+                final_output.append(temp_arr)
+
+            for c in range(len(final_output)):
+                if len(final_output[c]) == 0:
+                    final_output[c].append(-1)
+
+            # print("final :", final_output)
+
+
+            # sample_input = ['Hi', 'Hello from AskPython', 'exit']
+            for ip in final_output:
+                temp_out = ""
+                bb=0
+                for v in ip:
+                    # print("v: ",v)
+                    if bb == 0:
+                        temp_out = temp_out + str(v)
+                        bb = bb + 1
+                    else:
+                        temp_out = temp_out + " " + str(v)
+                # print("# TEMP: ",temp_out)
+                stdout_fileno.write(temp_out + '\n')
             exit(0)
         else:
-            if count_in == 0:
+            if count_in == -1:
                 value = (line.strip()).split(" ")
-                total_lines = int(value[0]) + int(value[1])
-                print(total_lines)
+                n = int(value[0])
+                m = int(value[1])
+                total_lines = n + m
+                count_in = 0
+                count_in = count_in + 1
+            else:
+                value = str(line.strip())
+                if n_count <= n:
+                    arr_n.append(value)
+                    n_count = n_count + 1
+                else:
+                    arr_m.append(value)
+                count_in = count_in + 1
+
 
 
 def Alphabet_Rangoli():
