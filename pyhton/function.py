@@ -3,6 +3,67 @@
 def check():
     return "Yeah its working !!"
 
+def Word_Order():
+    import sys
+
+    stdin_fileno = sys.stdin
+    # stdout_fileno = sys.stdout
+    total_lines = 0
+    count_in = -1
+    main_arr = []
+    for line in stdin_fileno:
+        # print("count_in :",count_in,"total :", total_lines)
+        if count_in == total_lines:
+            main_arr.append(str(line.strip()))
+
+            # list_set = set(main_arr)
+            # unique_list = (list(list_set))
+
+            # print(unique_list)
+            # print(main_arr)
+            # ['q', 'a', 'q', 'x']
+            unq_arr = []
+            prod_arr = []
+            for x in main_arr:
+                check = False
+                for y in unq_arr:
+                    if x == y:
+                        check = True
+                if check == False:
+                    unq_arr.append(x)
+                    char_count = 0
+                    for xx in main_arr:
+                        if x == xx:
+                            char_count = char_count + 1
+                    prod_arr.append(char_count)
+
+            # print(unq_arr)
+            # print(prod_arr)
+
+            # stdout_fileno.write(str(len(unq_arr)) + '\n')
+            print(str(len(unq_arr)))
+            # str_m = ""
+            c = False
+            # for f in prod_arr:
+            #     if c == False:
+            #         str_m = str_m + str(f)
+            #         c=True
+            #     else:
+            #         str_m = str_m + " " + str(f)
+            # print(str_m)
+            # stdout_fileno.write(str(str_m) + '\n')
+            print(*prod_arr, sep = " ")
+
+            exit(0)
+        else:
+            if count_in == -1:
+                total_lines = int(line)
+                count_in = 0
+                count_in = count_in + 1
+            else:
+                main_arr.append(str(line.strip()))
+                count_in = count_in + 1
+
 def DefaultDict_Tutorial():
     import sys
 

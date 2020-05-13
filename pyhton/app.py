@@ -9,8 +9,9 @@ def hello_world():
 @app.route('/test')
 def function_check():
     ############### Functions ###############
-    # function.Alphabet_Rangoli()   
-    function.DefaultDict_Tutorial()
+    # function.Alphabet_Rangoli()
+    # function.DefaultDict_Tutorial()
+    function.Word_Order()
     #########################################
     return ("Working [##########.............] 75% Completed")
 
