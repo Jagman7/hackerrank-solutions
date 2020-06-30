@@ -3,14 +3,79 @@
 def check():
     return "Yeah its working !!"
 
-def Word_Order():
+def No_Idea():
     import sys
 
     stdin_fileno = sys.stdin
-    # stdout_fileno = sys.stdout
+    step_count = 1
+    for line in stdin_fileno:
+
+        entered_string = str(line.strip())
+        if step_count is 1:
+            lst_int_arr = entered_string.split(" ")
+            step_count = step_count + 1
+        elif step_count is 2:
+            lst_int_n_m = entered_string.split(" ")
+            step_count = step_count + 1
+        elif step_count is 3:
+            lst_int_set_A = entered_string.split(" ")
+            step_count = step_count + 1
+        elif step_count is 4:
+            lst_int_set_B = entered_string.split(" ")
+            step_count = step_count + 1
+
+            # print(lst_int_set_A)
+            # print(lst_int_set_B)
+
+            ############ Calucaltion ############
+            pos = 0
+            neg = 0
+            # for element in lst_int_n_m:
+            #     if element in lst_int_set_A:
+            #         pos = pos + 1
+            #     if element in lst_int_set_B:
+            #         neg = neg - 1
+            main = set(lst_int_n_m)
+            # pos_arr = main.intersection(lst_int_set_A)
+            # neg_arr = main.intersection(lst_int_set_B)
+
+            pos_arr = intersection(main, lst_int_set_A)
+            neg_arr = intersection(main, lst_int_set_B)
+            #####################################
+            ans = len(pos_arr) - len(neg_arr)
+            print(ans)
+            exit(0)
+
+def intersection(lst1, lst2):   
+    # Use of hybrid method
+    temp = set(lst2)
+    lst3 = [value for value in lst1 if value in temp]
+    return lst3
+
+def merge_the_tools(string, k):
+    from collections import OrderedDict
+    poss = 0
+    poss_after = k
+    print(string)
+    for i in range(0,len(string),k):
+        temp_out_sub_str = string[poss:poss_after]
+        pro_out = "".join(OrderedDict.fromkeys(temp_out_sub_str))
+        print(pro_out)
+
+        poss = poss + k
+        poss_after = poss_after + k
+    pass
+
+def Word_Order():
+    import sys
+    from pprint import  pprint
+    from collections import Counter
+    stdin_fileno = sys.stdin
+    stdout_fileno = sys.stdout
     total_lines = 0
     count_in = -1
     main_arr = []
+    doit = False
     for line in stdin_fileno:
         # print("count_in :",count_in,"total :", total_lines)
         if count_in == total_lines:
@@ -23,40 +88,56 @@ def Word_Order():
             # print(main_arr)
             # ['q', 'a', 'q', 'x']
             unq_arr = []
-            prod_arr = []
-            for x in main_arr:
-                check = False
-                for y in unq_arr:
-                    if x == y:
-                        check = True
-                if check == False:
-                    unq_arr.append(x)
-                    char_count = 0
-                    for xx in main_arr:
-                        if x == xx:
-                            char_count = char_count + 1
-                    prod_arr.append(char_count)
+            prod_arr = {}
+            # for x in main_arr:
+            #     check = False
+            #     for y in unq_arr:
+            #         if x == y:
+            #             check = True
+            #     if check == False:
+            #         unq_arr.append(x)
+            #         char_count = 0
+            #         for xx in main_arr:
+            #             if x == xx:
+            #                 char_count = char_count + 1
+            #         prod_arr.append(char_count)
+
+            # for x in main_arr:
+            #     char_count = 0
+            #     for xx in main_arr:
+            #         if x == xx:
+            #             char_count = char_count + 1
+            #     prod_arr[x]=char_count
+
+            # prod_arr = {i:main_arr.count(i) for i in main_arr}
+            prod_arr = dict(Counter(main_arr))
 
             # print(unq_arr)
             # print(prod_arr)
 
             # stdout_fileno.write(str(len(unq_arr)) + '\n')
-            print(str(len(unq_arr)))
+            # print(str(len(unq_arr)))
+            print(str(len(prod_arr)))
+            pprint(prod_arr)
             # str_m = ""
-            c = False
+            # c = False
             # for f in prod_arr:
             #     if c == False:
-            #         str_m = str_m + str(f)
+            #         str_m = str_m + str(prod_arr[f])
             #         c=True
             #     else:
-            #         str_m = str_m + " " + str(f)
+            #         str_m = str_m + " " + str(prod_arr[f])
             # print(str_m)
             # stdout_fileno.write(str(str_m) + '\n')
-            print(*prod_arr, sep = " ")
+            out_arr = []
+            for key, value in prod_arr.items():
+                out_arr.append(value)
+            print(*out_arr, sep = " ")
 
             exit(0)
         else:
-            if count_in == -1:
+
+            if count_in == -1 :
                 total_lines = int(line)
                 count_in = 0
                 count_in = count_in + 1
@@ -118,7 +199,7 @@ def DefaultDict_Tutorial():
                         bb = bb + 1
                     else:
                         temp_out = temp_out + " " + str(v)
-                # print("# TEMP: ",temp_out)
+                print("# TEMP: ",temp_out)
                 stdout_fileno.write(temp_out + '\n')
             exit(0)
         else:

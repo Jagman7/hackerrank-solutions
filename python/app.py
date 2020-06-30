@@ -1,5 +1,5 @@
 from flask import Flask
-import function
+from logic import function
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,7 +11,9 @@ def function_check():
     ############### Functions ###############
     # function.Alphabet_Rangoli()
     # function.DefaultDict_Tutorial()
-    function.Word_Order()
+    # function.Word_Order()
+    # function.merge_the_tools(string='AABCAAADA',k=3)
+    function.No_Idea()
     #########################################
     return ("Working [##########.............] 75% Completed")
 
