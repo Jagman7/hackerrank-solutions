@@ -13,7 +13,8 @@ def function_check():
     # function.DefaultDict_Tutorial()
     # function.Word_Order()
     # function.merge_the_tools(string='AABCAAADA',k=3)
-    function.No_Idea()
+    #function.No_Idea()
+    function.capatalize("jagjit  12asd  singh")
     #########################################
     return ("Working [##########.............] 75% Completed")
 

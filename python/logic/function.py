@@ -3,6 +3,52 @@
 def check():
     return "Yeah its working !!"
 
+def capatalize(s):
+    lst_int_arr = s.split()
+    output_string = ""
+    for word in lst_int_arr:
+        # print(word.isdigit())
+        if word[0].isdigit():
+            #print(word)
+            if output_string == "":
+                output_string = word
+            else:
+                output_string = output_string + " " + word
+        else:
+            if output_string == "":
+                output_string = word.title()
+            else:
+                output_string = output_string + " " + word.title()
+
+    print(output_string)
+
+    # import sys
+    #
+    # stdin_fileno = sys.stdin
+    # step_count = 1
+    # entered_string = ""
+    # for line in stdin_fileno:
+    #     entered_string = str(line.strip())
+    #     lst_int_arr = entered_string.split(" ")
+    #     output_string = ""
+    #     for word in lst_int_arr:
+    #         #print(word.isdigit())
+    #         if word[0].isdigit():
+    #             print(word)
+    #             if output_string == "":
+    #                 output_string = word
+    #             else:
+    #                 output_string = output_string + " " + word
+    #         else:
+    #             if output_string == "":
+    #                 output_string = word.title()
+    #             else:
+    #                 output_string = output_string + " " + word.title()
+    #     print(output_string)
+
+    #     pass
+    # print(entered_string)
+
 def No_Idea():
     import sys
 
